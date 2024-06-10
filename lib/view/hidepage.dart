@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:contact_hub/provider/hide_provider.dart';
-import 'package:contact_hub/provider/contact_provider.dart';
 
 class HidePage extends StatelessWidget {
   const HidePage({Key? key}) : super(key: key);

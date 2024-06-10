@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:contact_hub/provider/contact_provider.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({Key? key}) : super(key: key);
+  const Homepage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class Homepage extends StatelessWidget {
           showDialog(
             context: context,
             builder: (context) {
-              return AlertBox();
+              return const AlertBox();
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Contact Hub",
           style: TextStyle(
             fontSize: 24,
@@ -35,11 +35,11 @@ class Homepage extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).pushNamed("hide");
             },
-            icon: Icon(Icons.archive_outlined),
+            icon: const Icon(Icons.archive_outlined),
           ),
         ],
       ),
-      drawer: Drawer(
+      drawer: const Drawer(
         child: Column(
           children: [
             CircleAvatar(
@@ -56,9 +56,9 @@ class Homepage extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: "Search Contacts",
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.clear),
+                  icon: const Icon(Icons.clear),
                   onPressed: () {
                     Provider.of<SearchProvider>(context, listen: false)
                         .clearSearchQuery();
@@ -79,7 +79,8 @@ class Homepage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     var contact = contactProvider.contacts[index];
                     return Card(
-                      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
                       child: ListTile(
                         leading: CircleAvatar(
                           child: Text(
@@ -88,7 +89,7 @@ class Homepage extends StatelessWidget {
                                 .characters
                                 .first
                                 .toUpperCase(),
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.white,
                             ),
                           ),
@@ -100,22 +101,24 @@ class Homepage extends StatelessWidget {
                           children: [
                             IconButton(
                               onPressed: () {},
-                              icon: Icon(
+                              icon: const Icon(
                                 Icons.call,
                                 color: Colors.green,
                               ),
                             ),
-                            PopupMenuButton(itemBuilder: (contaxt) {
-                              return <PopupMenuEntry>[
-                                PopupMenuItem(
-                                  onTap: () {
-                                    Provider.of<HideProvider>(context)
-                                        .addHiddenContact(contact);
-                                  },
-                                  child: const Text("Hide"),
-                                ),
-                              ];
-                            })
+                            PopupMenuButton(
+                              itemBuilder: (contaxt) {
+                                return <PopupMenuEntry>[
+                                  PopupMenuItem(
+                                    onTap: () {
+                                      Provider.of<HideProvider>(context)
+                                          .addHiddenContact(contact);
+                                    },
+                                    child: const Text("Hide"),
+                                  ),
+                                ];
+                              },
+                            ),
                           ],
                         ),
                       ),
@@ -132,7 +135,7 @@ class Homepage extends StatelessWidget {
 }
 
 class AlertBox extends StatelessWidget {
-  const AlertBox({Key? key}) : super(key: key);
+  const AlertBox({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -192,10 +195,10 @@ class AlertBox extends StatelessWidget {
                       ? StepState.complete
                       : StepState.indexed,
                   isActive: stepperModel.count >= 1,
-                  title: Text("Name"),
+                  title: const Text("Name"),
                   content: TextField(
                     controller: nameController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Enter Name",
                       border: OutlineInputBorder(),
                     ),
@@ -206,11 +209,11 @@ class AlertBox extends StatelessWidget {
                       ? StepState.complete
                       : StepState.indexed,
                   isActive: stepperModel.count >= 2,
-                  title: Text("Contact"),
+                  title: const Text("Contact"),
                   content: TextField(
                     keyboardType: TextInputType.number,
                     controller: contactController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Enter Contact Number",
                       border: OutlineInputBorder(),
                     ),
@@ -221,11 +224,11 @@ class AlertBox extends StatelessWidget {
                       ? StepState.complete
                       : StepState.indexed,
                   isActive: stepperModel.count >= 3,
-                  title: Text("Email"),
+                  title: const Text("Email"),
                   content: TextField(
                     keyboardType: TextInputType.emailAddress,
                     controller: emailController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: "Enter Email",
                       border: OutlineInputBorder(),
                     ),
